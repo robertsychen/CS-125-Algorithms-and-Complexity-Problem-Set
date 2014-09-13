@@ -1,10 +1,13 @@
 #include <iostream>
 #include <string>
+<<<<<<< HEAD
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
 #include <cmath>
 #include <iomanip>
+=======
+>>>>>>> FETCH_HEAD
 using namespace std;
 
 int main(int argc, char **argv)
