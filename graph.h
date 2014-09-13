@@ -14,7 +14,7 @@ class Vertex {
 
 class Edge {
     public:
-        int weight;
+        double weight;
         Vertex* a;
         Vertex* b;
 };
@@ -25,7 +25,7 @@ class Graph {
         ~Graph(); // destructor
         int V;
         vector<Vertex*> vertices;
-        vector< vector<int> > adjacency;
+        vector< vector<double> > adjacency;
 
         vector<Vertex*> getVertices();
         vector<Edge*> getEdges();
