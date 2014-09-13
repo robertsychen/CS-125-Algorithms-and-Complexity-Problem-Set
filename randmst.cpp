@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 		cout << endl;
 	}
 
-	double adjmatrix[numpoints][numpoints];
+	vector<vector<double>> adjmatrix(numpoints, vector<double>(numpoints));
 	double squareddistance;
 	for (int i = 0; i < numpoints; i++)
 	{
@@ -43,6 +43,9 @@ int main(int argc, char **argv)
 		cout << endl;
 	}
 	//MAKE GRAPH OBJECT THING
+	Graph* graphA = new Graph();
+	graphA.adjacency = adjmatrix; 
+	graphA.vertices = points;
 	kruskal(graphA);
 }
 
@@ -62,10 +65,9 @@ Graph kruskal(Graph graph1)
 	{
 		if (edgearray[i].a.set != edgearray[i].b.set)
 		{
-			
-		}
 			//add the edge to Graph spantree
-			//use setunion on those two disjoint sets
+			setunion(edgearray[i].a.set, edgearray[i].b.set)
+		}
 	}
 	return spantree;
 }
