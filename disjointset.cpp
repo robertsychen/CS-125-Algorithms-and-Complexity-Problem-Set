@@ -1,7 +1,7 @@
 #include <iostream> 
 using namespace std;
 
-typedef int* Vertex;
+extern class Vertex;
 
 class DisjointSet {
     public:
@@ -14,6 +14,9 @@ class DisjointSet {
 };
 
 DisjointSet::DisjointSet(Vertex* v) {
+    // we must set the vertex's set
+    v.set = this;
+
     vertex = v; 
     parent = this;
     rank = 0;
