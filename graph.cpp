@@ -1,43 +1,15 @@
 #include <iostream>
 #include <vector>
+#include "graph.h"
+#include "disjointset.h"
 using namespace std;
-
-typedef int* Vertex;
-
-class Vertex {
-    public:
-        Vertex();
-        ~Vertex();
-        vector<int> value;
-        DisjointSet* set;
-};
-
-
-class Edge {
-    public:
-        int weight;
-        Vertex* a;
-        Vertex* b;
-};
-
-class Graph {
-    public:
-        Graph(int); // constructor
-        ~Graph(); // destructor
-        int V;
-        vector<Vertex*> vertices;
-        vector< vector<int> > adjacency;
-
-        vector<Vertex*> getVertices();
-        vector<Edge*> getEdges();
-};
 
 Vertex::Vertex() {
     
 }
 
 Vertex::~Vertex() {
-    if (set != null)
+    if (set != NULL)
         delete(set);
 }
 
@@ -50,7 +22,6 @@ inline vector<Vertex*> Graph::getVertices() {
 }
 
 inline vector<Edge*> Graph::getEdges() {
-    int size = V;
 
     vector<Edge*> result ( V*(V-1)/2 );
 

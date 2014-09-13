@@ -1,21 +1,11 @@
 #include <iostream> 
+#include "disjointset.h"
+#include "graph.h"
 using namespace std;
-
-extern class Vertex;
-
-class DisjointSet {
-    public:
-        DisjointSet(Vertex*); //constructor
-        ~DisjointSet(); //destructor
-
-        DisjointSet* parent;
-        int rank;
-        Vertex* vertex;
-};
 
 DisjointSet::DisjointSet(Vertex* v) {
     // we must set the vertex's set
-    v.set = this;
+    v->set = this;
 
     vertex = v; 
     parent = this;
