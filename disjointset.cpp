@@ -1,55 +1,69 @@
-#include<iostream> 
-using namespace std
+#include <iostream> 
+using namespace std;
 
 typedef int* Vertex;
 
 class DisjointSet {
     public:
-        DisjointSet(Vertex); //constructor
+        DisjointSet(Vertex*); //constructor
         ~DisjointSet(); //destructor
-
-        DisjointSet* find();
 
         DisjointSet* parent;
         int rank;
         Vertex* vertex;
-}
+};
 
 DisjointSet::DisjointSet(Vertex* v) {
     vertex = v; 
-    parent = v;
+    parent = this;
     rank = 0;
 }
 
-DisjointSet* DisjointSet::find () {
-    if (vertex != parent->vertex) {
-        return find(parent);
+// parent(x)
+inline DisjointSet* parent(DisjointSet* s) {
+    return s->parent;
+}
+
+// rank(s)
+inline int rank(DisjointSet* s) {
+    return s->rank;
+}
+
+// find(x)
+DisjointSet* find (DisjointSet* s) {
+    if (s->vertex != s->parent->vertex) {
+        DisjointSet* result = find(s->parent);
+        s->parent = result;
+        return result;
     } else {
-        return &this; 
+        return s; 
     }
 }
 
-inline DisjointSet* makeset(Vertex v) {
+// makeset(v)
+inline DisjointSet* makeset(Vertex* v) {
     return new DisjointSet(v);
 }
 
+// link(x,y)
 DisjointSet* link(DisjointSet* x, DisjointSet* y) {
     if (x->rank > y->rank) {
-        y.parent = x;
+        y->parent = x;
         return x;
     }
     else if (x->rank < y->rank) {
-        x.parent = y;
+        x->parent = y;
         return y;
     }
     else { // x->rank == y-> rank
-        y.rank++;
-        x.parent = y;
+        y->rank++;
+        x->parent = y;
         return y;
     }
 }
 
-DisjointSet* setunion(DisjointSet* x, DisjointSet* y) {
+// union(x,y)
+inline DisjointSet* setunion(DisjointSet* x, DisjointSet* y) {
     return link(find(x), find(y));
 }
 
