@@ -7,10 +7,11 @@
 #include <iomanip>
 using namespace std;
 
+int numpoints = atoi(argv[2]);
+int dimension = atoi(argv[4]);
+
 int main(int argc, char **argv)
 {
-	int numpoints = atoi(argv[2]);
-	int dimension = atoi(argv[4]);
 	srand (time(NULL));
 
 	double points[numpoints][dimension];
@@ -41,6 +42,30 @@ int main(int argc, char **argv)
 		}
 		cout << endl;
 	}
+	//MAKE GRAPH OBJECT THING
+	kruskal(graphA);
+}
 
-	
+Graph kruskal(Graph graph1)
+{
+	Graph* spantree = new Graph();
+	//make sure default has all the vertices?
+	edgearray = spantree.getEdges();
+	vertexarray = spantree.getVertices();
+
+	for (int i = 0; i < numpoints; i++)
+	{
+		makeset(vertexarray[i]);
+	}
+
+	for (int i = 0; i < (numpoints * (numpoints - 1) / 2); i++)
+	{
+		if (edgearray[i].a.set != edgearray[i].b.set)
+		{
+			
+		}
+			//add the edge to Graph spantree
+			//use setunion on those two disjoint sets
+	}
+	return spantree;
 }
