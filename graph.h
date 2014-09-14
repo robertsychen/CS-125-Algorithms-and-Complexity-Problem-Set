@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
 class DisjointSet;
@@ -21,12 +22,19 @@ class Edge {
 
 class Graph {
     public:
-        Graph(int); // constructor
+        Graph(); // constructor
         ~Graph(); // destructor
-        int V;
+        int num_vertices;
+
+        // maps ints to vectors (vertices[i])
         vector<Vertex*> vertices;
+        // maps vertices to ints (vtoi[ pointer to vertex ])
+        map<Vertex*,int> vtoi;
+
         vector< vector<double> > adjacency;
 
         vector<Vertex*> getVertices();
         vector<Edge*> getEdges();
+
+        void addEdge(Edge*);
 };
