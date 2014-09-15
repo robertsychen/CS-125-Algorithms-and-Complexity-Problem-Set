@@ -30,8 +30,8 @@ int main(int argc, char **argv)
 
 		//make a complete Graph
 		Graph* completeGraph = new Graph(numpoints);
-		completeGraph->num_vertices = numpoints;
-		completeGraph->vertices = setOfPoints;
+		//completeGraph->num_vertices = numpoints;
+		//completeGraph->vertices = setOfPoints;
 		addTheEdges(setOfPoints, numpoints, dimension, completeGraph);
 
 		Graph* answer = kruskal(completeGraph, numpoints);
@@ -82,6 +82,7 @@ void addTheEdges(vector <Vertex*> somepoints, int numpoints, int dimension, Grap
 			thisEdge->weight = sqrt (squareddistance);
 			thisEdge->a = somepoints[i];
 			thisEdge->b = somepoints[j];
+			myGraph->addEdge(thisEdge);
 
 			cout << std::setw(10) << thisEdge->weight;
 		} 
