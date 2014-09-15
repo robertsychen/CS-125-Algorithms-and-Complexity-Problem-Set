@@ -99,7 +99,7 @@ void Graph::addEdge(Edge* edge) {
         vertices[b_index] = (edge->b);
     }
 
-    cout << "s:" << a_index << " " << b_index << endl;
+    //cout << "s:" << a_index << " " << b_index << endl;
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
 }
