@@ -49,6 +49,8 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
 	cout << "Here are the coordinates of the vertices." << endl;
 	for (int i = 0; i < numpoints; i++)
 	{
+		Vertex* aVertex = new Vertex(dimension);
+		points[i] = aVertex;
 		for (int j = 0; j < dimension; j++)
 		{
 			points[i]->value[j] = ((double) rand() / (RAND_MAX));
