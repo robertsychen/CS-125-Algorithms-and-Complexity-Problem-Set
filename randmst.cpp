@@ -157,18 +157,23 @@ Graph* kruskal(Graph* graph1, int numpoints)
 		makeset(vertexarray[i]); //Why does this work?
 	}
 
+	int counter = 0;
 	for (int i = 0; i < numberofedges; i++)
 	{
 		if (edgearray[i]->a->set != edgearray[i]->b->set)
 		{
-			spantree->addEdge(edgearray[i]);
+			if (counter < numpoints - 1)
+			{
+				spantree->addEdge(edgearray[i]);
 
-			cout << edgearray[i]->a << endl; //for testing
-			cout << edgearray[i]->b << endl; // for testing
-			cout << edgearray[i]->weight << endl; //for testing
+				cout << edgearray[i]->a << endl; //for testing
+				cout << edgearray[i]->b << endl; // for testing
+				cout << edgearray[i]->weight << endl; //for testing
 
-			setunion(edgearray[i]->a->set, edgearray[i]->b->set); //Does this work?
-			printAnswer (spantree->adjacency, numpoints);
+				setunion(edgearray[i]->a->set, edgearray[i]->b->set); //Does this work?
+				printAnswer (spantree->adjacency, numpoints);
+				counter++;
+			}
 		}
 	}
 
