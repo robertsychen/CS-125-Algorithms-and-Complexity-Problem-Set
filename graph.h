@@ -8,7 +8,7 @@ class Vertex {
     public:
         Vertex(int);
         ~Vertex();
-        vector<int> value;
+        vector<double> value;
         DisjointSet* set;
         int dimension;
 };
