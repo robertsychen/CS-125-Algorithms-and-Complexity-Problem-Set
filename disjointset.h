@@ -11,6 +11,6 @@ class DisjointSet {
         Vertex* vertex;
 };
 
-inline DisjointSet* makeset(Vertex* v);
+DisjointSet* makeset(Vertex* v);
 DisjointSet* link(DisjointSet* x, DisjointSet* y);
-inline DisjointSet* setunion(DisjointSet* x, DisjointSet* y);
+DisjointSet* setunion(DisjointSet* x, DisjointSet* y);
