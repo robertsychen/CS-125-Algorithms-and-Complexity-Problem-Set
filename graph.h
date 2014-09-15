@@ -4,7 +4,6 @@
 using namespace std;
 
 class DisjointSet;
-
 class Vertex {
     public:
         Vertex();
@@ -37,4 +36,5 @@ class Graph {
         vector<Edge*> getEdges();
 
         void addEdge(Edge*);
+        void addVertex(Vertex*);
 };

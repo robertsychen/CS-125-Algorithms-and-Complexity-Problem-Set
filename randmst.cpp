@@ -5,6 +5,9 @@
 #include <math.h>
 #include <cmath>
 #include <iomanip>
+#include <vector>
+#include "graph.h"
+#include "disjointset.h"
 using namespace std;
 
 int numpoints = atoi(argv[2]);

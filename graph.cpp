@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include "graph.h"
 #include "disjointset.h"
 using namespace std;
@@ -14,11 +15,31 @@ Vertex::~Vertex() {
 }
 
 Graph::Graph() {
+
 }
 
 Graph::~Graph() {
-    delete(&vertices);
-    delete(&adjacency);
+    //delete(&vertices);
+    //delete(&adjacency);
+}
+
+// add a vertex to a graph.
+void Graph::addVertex(Vertex* vertex) {
+    // first, check if v is already in graph
+    bool v_in_graph = false;
+    for (unsigned int i = 0; i < vertices.size(); i++) {
+        Vertex* v = vertices[i];
+        if (v == vertex) {
+            v_in_graph = true;
+        }
+    }
+
+    if (v_in_graph) 
+        return;
+    
+    int index = vertices.size();
+    vertices[index] = vertex;
+    vtoi[vertex] = index;
 }
 
 // add an edge to a graph
