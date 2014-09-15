@@ -6,10 +6,11 @@ using namespace std;
 class DisjointSet;
 class Vertex {
     public:
-        Vertex();
+        Vertex(int);
         ~Vertex();
         vector<int> value;
         DisjointSet* set;
+        int dimension;
 };
 
 class Edge {

@@ -5,8 +5,9 @@
 #include "disjointset.h"
 using namespace std;
 
-Vertex::Vertex() {
-
+Vertex::Vertex(int dim) {
+    dimension = dim;
+    value.resize(dim);
 }
 
 Vertex::~Vertex() {
