@@ -51,6 +51,7 @@ void Graph::addEdge(Edge* edge) {
 
     // unfortunately this is O(n). TODO: optimize!!
     for (unsigned int i = 0; i < vertices.size(); i++) {
+        cout << i << endl;
         Vertex* v = vertices[i];
         if (v == edge->a) {
             a_in_graph = true;
