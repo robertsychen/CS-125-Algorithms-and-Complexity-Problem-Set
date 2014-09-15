@@ -118,8 +118,8 @@ Graph* kruskal(Graph* graph1, int numpoints)
 	}
 
 	Graph* spantree = new Graph(numpoints);
-	spantree->num_vertices = numpoints;
-	spantree->vertices = graph1->vertices;
+	//spantree->num_vertices = numpoints;
+	//spantree->vertices = graph1->vertices;
 
 	//fill adjacency matrix of spantree with zeroes
 	vector<vector<double> > zeroMatrix(numpoints, vector<double>(numpoints));
