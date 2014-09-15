@@ -38,7 +38,10 @@ class Graph {
         void addEdge(Edge*);
         void addVertex(Vertex*);
 
+        int numVertices(); // number of vertices
+        int maxVertices(); //maximum number of vertices
+
     protected:
-        num_vertices;
-        max_vertices;
+        int num_vertices;
+        int max_vertices;
 };

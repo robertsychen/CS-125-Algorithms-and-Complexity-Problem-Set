@@ -17,7 +17,7 @@ Vertex::~Vertex() {
 
 Graph::Graph(int max_vert) {
     max_vertices = max_vert; 
-    
+    num_vertices = 0; 
     adjacency.resize(max_vertices);
     for (int i = 0; i < max_vertices; i++) {
         adjacency[i].resize(max_vertices);
@@ -27,6 +27,14 @@ Graph::Graph(int max_vert) {
 
 Graph::~Graph() {
 
+}
+
+int Graph::numVertices() {
+    return num_vertices;
+}
+
+int Graph::maxVertices() {
+    return max_vertices;
 }
 
 // add a vertex to a graph.
@@ -50,6 +58,11 @@ void Graph::addVertex(Vertex* vertex) {
 
 // add an edge to a graph
 void Graph::addEdge(Edge* edge) {
+    //cout << "adding edge " << edge->a << ", " << edge->b << endl;
+
+    if (edge->a == edge->b) {
+        return; //cannot have a connection to itself
+    }
     // first, check if either endpoints of the edges are already
     // in the graph
     bool a_in_graph = false;
@@ -75,7 +88,7 @@ void Graph::addEdge(Edge* edge) {
     } else {
         vtoi[edge->a] = a_index;
         num_vertices++;
-        vertices.push_back(edge->a);
+        vertices[a_index] = (edge->a);
     }
 
     if (b_in_graph) { 
@@ -83,9 +96,10 @@ void Graph::addEdge(Edge* edge) {
     } else {
         vtoi[edge->b] = b_index;
         num_vertices++;
-        vertices.push_back(edge->b);
+        vertices[b_index] = (edge->b);
     }
 
+    cout << "s:" << a_index << " " << b_index << endl;
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
 }

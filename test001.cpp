@@ -22,8 +22,8 @@ int main(int argc, char** argv) {
 
 void test_init() {
     Graph* g = new Graph(10);
-    assert((int)g->vertices.size() == g->max_vertices);
-    assert((int)g->adjacency.size() == g->max_vertices);
+    assert((int)g->vertices.size() == g->maxVertices());
+    assert((int)g->adjacency.size() == g->maxVertices());
     delete(g);
 }
 
@@ -33,7 +33,7 @@ void test_addVertex() {
     for (int i = 0; i < 1000; i++) {
         Vertex* v = new Vertex(1);
         g->addVertex(v);
-        assert(g->num_vertices == i+1);
+        assert(g->numVertices() == i+1);
     }
 
     for (int i = 0; i < 1000; i++) {
@@ -41,7 +41,7 @@ void test_addVertex() {
         assert(g->vtoi[v] == i);
 
         g->addVertex(v);
-        assert(g->num_vertices == 1000);
+        assert(g->numVertices() == 1000);
     }
     
     for (int i = 0; i < 1000;i++) {
@@ -62,7 +62,7 @@ void test_addEdge1() {
     Graph* g = new Graph(10);
     g->addEdge(edge);
 
-    assert(g->num_vertices == 2);
+    assert(g->numVertices() == 2);
     int index_a = g->vtoi[v1];
     int index_b = g->vtoi[v2];
     assert(g->adjacency[index_a][index_b] == edge->weight);
