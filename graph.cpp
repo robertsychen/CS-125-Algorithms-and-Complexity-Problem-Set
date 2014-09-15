@@ -95,12 +95,19 @@ vector<Vertex*> Graph::getVertices() {
 }
 
 vector<Edge*> Graph::getEdges() {
+    if (1 == 0) {
+    for (int i = 0 ; i < max_vertices; i++) {
+        for (int j = 0; j < max_vertices; j++)
+            cout << adjacency[i][j];
+        cout << endl;
+    }
+    }
 
     vector<Edge*> result;
 
     int index = 0;
-    for (int i = 0; i < num_vertices; i++) {
-        for (int j = i+1; j < num_vertices; j++) {
+    for (int i = 0; i < max_vertices; i++) {
+        for (int j = i+1; j < max_vertices; j++) {
             double c = adjacency[i][j];
 
             if (c != 0) {
