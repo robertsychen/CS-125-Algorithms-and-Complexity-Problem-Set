@@ -127,9 +127,9 @@ Graph* kruskal(Graph* graph1, int numpoints)
 	//bubble sort the edges of the complete graph
 	int numberofedges = (numpoints)*(numpoints - 1)*(0.5);
 	double temp;
-	for (int i = 0; i <= numberofedges-1; i++)             
+	for (int i = 0; i <= numberofedges-2; i++)             
 	{
-		for (int j = 1; j <= numberofedges-1; j++)
+		for (int j = 0; j <= numberofedges-2; j++)
 		{
 			if (edgearray[j] > edgearray[j+1])
 			{
