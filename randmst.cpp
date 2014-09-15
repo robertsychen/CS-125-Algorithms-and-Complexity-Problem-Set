@@ -125,7 +125,7 @@ Graph* kruskal(Graph* graph1, int numpoints)
 	vector<Vertex*> vertexarray = graph1->getVertices();
 
 	//bubble sort the edges of the complete graph
-	int numberofedges = (numpoints)*(numpoints - 1)*(0.5);
+	double numberofedges = (numpoints)*(numpoints - 1)*(0.5);
 	double temp;
 	for (int i = 0; i <= numberofedges-2; i++)             
 	{
@@ -151,7 +151,13 @@ Graph* kruskal(Graph* graph1, int numpoints)
 		if (edgearray[i]->a->set != edgearray[i]->b->set)
 		{
 			spantree->addEdge(edgearray[i]);
+
+			cout << edgearray[i]->a << endl; //for testing
+			cout << edgearray[i]->b << endl; // for testing
+			cout << edgearray[i]->weight << endl; //for testing
+
 			setunion(edgearray[i]->a->set, edgearray[i]->b->set); //Does this work?
+			printAnswer (spantree->adjacency, numpoints);
 		}
 	}
 
