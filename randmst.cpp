@@ -25,7 +25,8 @@ int main(int argc, char **argv)
 
 	for (int i = 0; i < numtrials; i++)
 	{
-		vector <Vertex*> setOfPoints(numpoints) = createPoints(numpoints, dimension);
+		vector <Vertex*> setOfPoints(numpoints);
+		setOfPoints = createPoints(numpoints, dimension);
 
 		//make a complete Graph
 		Graph* completeGraph = new Graph();
@@ -75,7 +76,7 @@ void addTheEdges(vector <Vertex*> somepoints, int numpoints, int dimension, Grap
 			{
 				squareddistance += pow((somepoints[i]->value[k] - somepoints[j]->value[k]), 2);
 			}
-			Edge* thisEdge = new Edge;
+			Edge* thisEdge = new Edge();
 			thisEdge->weight = sqrt (squareddistance);
 			thisEdge->a = somepoints[i];
 			thisEdge->b = somepoints[j];
@@ -148,7 +149,7 @@ Graph* kruskal(Graph* graph1, int numpoints)
 		if (edgearray[i]->a->set != edgearray[i]->b->set)
 		{
 			spantree->addEdge(edgearray[i]);
-			setunion(edgearray[i]->a->set, edgearray[i]->b->set) //Does this work?
+			setunion(edgearray[i]->a->set, edgearray[i]->b->set); //Does this work?
 		}
 	}
 
