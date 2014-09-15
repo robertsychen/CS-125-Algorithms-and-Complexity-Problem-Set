@@ -11,6 +11,7 @@ class DisjointSet {
         Vertex* vertex;
 };
 
+DisjointSet* find(DisjointSet* x);
 DisjointSet* makeset(Vertex* v);
 DisjointSet* link(DisjointSet* x, DisjointSet* y);
 DisjointSet* setunion(DisjointSet* x, DisjointSet* y);

@@ -19,8 +19,6 @@ Graph::Graph() {
 }
 
 Graph::~Graph() {
-    //delete(&vertices);
-    //delete(&adjacency);
 }
 
 // add a vertex to a graph.
@@ -37,9 +35,8 @@ void Graph::addVertex(Vertex* vertex) {
     if (v_in_graph) 
         return;
     
-    int index = vertices.size();
-    vertices[index] = vertex;
-    vtoi[vertex] = index;
+    vertices.push_back(vertex);
+    vtoi[vertex] = vertices.size() - 1;
 }
 
 // add an edge to a graph
@@ -51,7 +48,6 @@ void Graph::addEdge(Edge* edge) {
 
     // unfortunately this is O(n). TODO: optimize!!
     for (unsigned int i = 0; i < vertices.size(); i++) {
-        cout << i << endl;
         Vertex* v = vertices[i];
         if (v == edge->a) {
             a_in_graph = true;
@@ -70,6 +66,7 @@ void Graph::addEdge(Edge* edge) {
     } else {
         vtoi[edge->a] = a_index;
         num_vertices++;
+        vertices.push_back(edge->a);
     }
 
     if (b_in_graph) { 
@@ -77,10 +74,8 @@ void Graph::addEdge(Edge* edge) {
     } else {
         vtoi[edge->b] = b_index;
         num_vertices++;
+        vertices.push_back(edge->b);
     }
-    
-    vertices[a_index] = edge->a;
-    vertices[b_index] = edge->b;
 
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
