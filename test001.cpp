@@ -30,7 +30,7 @@ void test_addVertex() {
     Graph* g = new Graph(1002);
 
     for (int i = 0; i < 1000; i++) {
-        Vertex* v = new Vertex();
+        Vertex* v = new Vertex(1);
         g->addVertex(v);
         assert(g->num_vertices == i+1);
     }
@@ -50,8 +50,8 @@ void test_addVertex() {
 }
 
 void test_addEdge1() {
-    Vertex* v1 = new Vertex();
-    Vertex* v2 = new Vertex();
+    Vertex* v1 = new Vertex(2);
+    Vertex* v2 = new Vertex(2);
 
     Edge* edge = new Edge();
     edge->a = v1; 

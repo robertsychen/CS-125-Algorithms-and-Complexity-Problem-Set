@@ -21,15 +21,15 @@ void disjointSetStuff()
 {
     Graph* mygraph = new Graph(10);
 
-    Vertex* vertex1 = new Vertex();
+    Vertex* vertex1 = new Vertex(3);
     DisjointSet* set1 = new DisjointSet(vertex1);
     mygraph->addVertex(vertex1);
 
-    Vertex* vertex2 = new Vertex();
+    Vertex* vertex2 = new Vertex(3);
     DisjointSet* set2 = new DisjointSet(vertex2);
     mygraph->addVertex(vertex2);
 
-    Vertex* vertex3 = new Vertex();
+    Vertex* vertex3 = new Vertex(3);
     DisjointSet* set3 = new DisjointSet(vertex3);
     mygraph->addVertex(vertex3);
 
