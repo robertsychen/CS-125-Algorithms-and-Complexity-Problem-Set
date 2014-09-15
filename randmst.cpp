@@ -106,6 +106,16 @@ void printAnswer(vector<vector<double> > answerMatrix, int numpoints)
 
 Graph* kruskal(Graph* graph1, int numpoints)
 {
+
+	for (int i = 0; i < numpoints; i++)
+	{
+		for (int j = 0; j < numpoints; j++)
+		{
+			cout << graph1->adjacency[i][j];
+		}
+		cout << endl;
+	}
+
 	Graph* spantree = new Graph(numpoints);
 	spantree->num_vertices = numpoints;
 	spantree->vertices = graph1->vertices;
