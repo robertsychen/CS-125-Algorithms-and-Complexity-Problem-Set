@@ -8,6 +8,7 @@ void test_init();
 void test_addVertex();
 void test_addEdge1();
 void test_addEdge2();
+void test_getEdges();
 
 /**
  * Tests graph functions
@@ -77,5 +78,14 @@ void test_addEdge2() {
 }
 
 void test_getEdges() {
-
+    Graph* g = new Graph(6000);
+    for (int i = 0; i < 300; i++) {
+        Edge* edge = new Edge();
+        edge->a = new Vertex(2);
+        edge->b = new Vertex(2);
+        edge->weight = 0.001;
+        g->addEdge(edge);
+        delete(edge);
+    }
+    assert(g->getEdges().size() == 300);
 }

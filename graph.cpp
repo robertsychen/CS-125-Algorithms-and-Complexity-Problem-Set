@@ -96,7 +96,7 @@ vector<Vertex*> Graph::getVertices() {
 
 vector<Edge*> Graph::getEdges() {
 
-    vector<Edge*> result ( num_vertices*(num_vertices-1)/2 );
+    vector<Edge*> result;
 
     int index = 0;
     for (int i = 0; i < num_vertices; i++) {
@@ -105,7 +105,7 @@ vector<Edge*> Graph::getEdges() {
             ed->weight = adjacency[i][j];
             ed->a = vertices[i];
             ed->b = vertices[j];
-            result[index] = ed; 
+            result.push_back(ed); 
         }
     }
     return result;
