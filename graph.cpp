@@ -86,11 +86,11 @@ void Graph::addEdge(Edge* edge) {
     adjacency[b_index][a_index] = edge->weight;
 }
 
-inline vector<Vertex*> Graph::getVertices() {
+vector<Vertex*> Graph::getVertices() {
     return vertices;
 }
 
-inline vector<Edge*> Graph::getEdges() {
+vector<Edge*> Graph::getEdges() {
 
     vector<Edge*> result ( num_vertices*(num_vertices-1)/2 );
 

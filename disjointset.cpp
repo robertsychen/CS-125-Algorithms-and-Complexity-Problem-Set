@@ -13,12 +13,12 @@ DisjointSet::DisjointSet(Vertex* v) {
 }
 
 // parent(x)
-inline DisjointSet* parent(DisjointSet* s) {
+DisjointSet* parent(DisjointSet* s) {
     return s->parent;
 }
 
 // rank(s)
-inline int rank(DisjointSet* s) {
+int rank(DisjointSet* s) {
     return s->rank;
 }
 
@@ -34,7 +34,7 @@ DisjointSet* find (DisjointSet* s) {
 }
 
 // makeset(v)
-inline DisjointSet* makeset(Vertex* v) {
+DisjointSet* makeset(Vertex* v) {
     return new DisjointSet(v);
 }
 
@@ -56,7 +56,7 @@ DisjointSet* link(DisjointSet* x, DisjointSet* y) {
 }
 
 // union(x,y)
-inline DisjointSet* setunion(DisjointSet* x, DisjointSet* y) {
+DisjointSet* setunion(DisjointSet* x, DisjointSet* y) {
     return link(find(x), find(y));
 }
 
