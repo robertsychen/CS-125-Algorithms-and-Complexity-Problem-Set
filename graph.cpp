@@ -10,22 +10,29 @@ Vertex::Vertex() {
 }
 
 Vertex::~Vertex() {
-    if (set != NULL)
-        delete(set);
+    //if (set != NULL)
+    //    delete(set);
 }
 
-Graph::Graph() {
-
+Graph::Graph(int max_vert) {
+    max_vertices = max_vert; 
+    
+    adjacency.resize(max_vertices);
+    for (int i = 0; i < max_vertices; i++) {
+        adjacency[i].resize(max_vertices);
+    }
+    vertices.resize(max_vertices);
 }
 
 Graph::~Graph() {
+
 }
 
 // add a vertex to a graph.
 void Graph::addVertex(Vertex* vertex) {
     // first, check if v is already in graph
     bool v_in_graph = false;
-    for (unsigned int i = 0; i < vertices.size(); i++) {
+    for (int i = 0; i < num_vertices; i++) {
         Vertex* v = vertices[i];
         if (v == vertex) {
             v_in_graph = true;
@@ -35,8 +42,9 @@ void Graph::addVertex(Vertex* vertex) {
     if (v_in_graph) 
         return;
     
-    vertices.push_back(vertex);
-    vtoi[vertex] = vertices.size() - 1;
+    vertices[num_vertices] = vertex;
+    vtoi[vertex] = num_vertices;
+    num_vertices++;
 }
 
 // add an edge to a graph

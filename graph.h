@@ -21,9 +21,10 @@ class Edge {
 
 class Graph {
     public:
-        Graph(); // constructor
+        Graph(int); // constructor
         ~Graph(); // destructor
         int num_vertices;
+        int max_vertices;
 
         // maps ints to vectors (vertices[i])
         vector<Vertex*> vertices;
