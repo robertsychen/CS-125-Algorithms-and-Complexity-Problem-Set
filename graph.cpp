@@ -101,16 +101,15 @@ vector<Edge*> Graph::getEdges() {
     int index = 0;
     for (int i = 0; i < num_vertices; i++) {
         for (int j = i+1; j < num_vertices; j++) {
-            int c = adjacency[i][j];
+            double c = adjacency[i][j];
 
-            if (c == 0)
-                continue; 
-
-            Edge* ed = new Edge();
-            ed->weight = c;
-            ed->a = vertices[i];
-            ed->b = vertices[j];
-            result.push_back(ed); 
+            if (c != 0) {
+                Edge* ed = new Edge();
+                ed->weight = c;
+                ed->a = vertices[i];
+                ed->b = vertices[j];
+                result.push_back(ed); 
+            }
         }
     }
     return result;
