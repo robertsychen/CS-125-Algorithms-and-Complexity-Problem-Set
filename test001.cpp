@@ -42,7 +42,10 @@ void test_addVertex() {
         g->addVertex(v);
         assert(g->vertices.size() == 1000);
     }
-
+    
+    for (int i = 0; i < 1000;i++) {
+        delete(g->vertices[i]);
+    }
     delete(g);
 }
 
