@@ -131,7 +131,7 @@ Graph* kruskal(Graph* graph1, int numpoints)
 	{
 		for (int j = 0; j <= numberofedges-2; j++)
 		{
-			if (edgearray[j] > edgearray[j+1])
+			if (edgearray[j]->weight > edgearray[j+1]->weight)
 			{
 				temp = edgearray[j]->weight;                      
 				edgearray[j]->weight = edgearray[j+1]->weight;
