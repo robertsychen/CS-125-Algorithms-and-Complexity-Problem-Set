@@ -19,7 +19,7 @@ int main() {
 
 void disjointSetStuff()
 {
-    Graph* mygraph = new Graph();
+    Graph* mygraph = new Graph(10);
 
     Vertex* vertex1 = new Vertex();
     DisjointSet* set1 = new DisjointSet(vertex1);

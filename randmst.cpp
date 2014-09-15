@@ -29,7 +29,7 @@ int main(int argc, char **argv)
 		setOfPoints = createPoints(numpoints, dimension);
 
 		//make a complete Graph
-		Graph* completeGraph = new Graph();
+		Graph* completeGraph = new Graph(numpoints);
 		completeGraph->num_vertices = numpoints;
 		completeGraph->vertices = setOfPoints;
 		addTheEdges(setOfPoints, numpoints, dimension, completeGraph);
@@ -104,7 +104,7 @@ void printAnswer(vector<vector<double> > answerMatrix, int numpoints)
 
 Graph* kruskal(Graph* graph1, int numpoints)
 {
-	Graph* spantree = new Graph();
+	Graph* spantree = new Graph(numpoints);
 	spantree->num_vertices = numpoints;
 	spantree->vertices = graph1->vertices;
 
