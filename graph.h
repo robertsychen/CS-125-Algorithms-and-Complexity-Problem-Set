@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <map>
+#include <string>
 using namespace std;
 
 class DisjointSet;
@@ -28,8 +29,6 @@ class Graph {
 
         // maps ints to vectors (vertices[i])
         vector<Vertex*> vertices;
-        // maps vertices to ints (vtoi[ pointer to vertex ])
-        // map<Vertex*,int> vtoi;
 
         vector< vector<double> > adjacency;
 

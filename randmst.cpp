@@ -24,8 +24,7 @@ int main(int argc, char **argv)
 
         //make a complete Graph
         Graph* completeGraph = new Graph(numpoints);
-        //completeGraph->num_vertices = numpoints;
-        //completeGraph->vertices = setOfPoints;
+        
         addTheEdges(setOfPoints, numpoints, dimension, completeGraph);
 
         Graph* answer = kruskal(completeGraph, numpoints);

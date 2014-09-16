@@ -74,82 +74,44 @@ void printAnswer(vector<vector<double> > answerMatrix, int numpoints)
 
 Graph* kruskal(Graph* graph1, int numpoints)
 {
-
-	for (int i = 0; i < numpoints; i++)
-	{
-		for (int j = 0; j < numpoints; j++)
-		{
-			cout << graph1->adjacency[i][j];
-		}
-		cout << endl;
-	}
-
 	Graph* spantree = new Graph(numpoints);
-	//spantree->num_vertices = numpoints;
-	//spantree->vertices = graph1->vertices;
-
-	//fill adjacency matrix of spantree with zeroes
-	vector<vector<double> > zeroMatrix(numpoints, vector<double>(numpoints));
-	for (int i = 0; i < numpoints; i++)
-	{
-		for (int j = 0; j < numpoints; j++)
-		{
-			zeroMatrix[i][j] = 0;
-		}
-	}
-	spantree->adjacency = zeroMatrix;
+	
+	double numberofedges = (numpoints)*(numpoints - 1)*(0.5);
 
 	vector<Edge*> edgearray = graph1->getEdges();
+
+	
 	vector<Vertex*> vertexarray = graph1->getVertices();
 
 	//bubble sort the edges of the complete graph
-	double numberofedges = (numpoints)*(numpoints - 1)*(0.5);
-	double temp;
+	Edge* temp = new Edge;
 	for (int i = 0; i <= numberofedges-2; i++)             
 	{
 		for (int j = 0; j <= numberofedges-2; j++)
 		{
 			if (edgearray[j]->weight > edgearray[j+1]->weight)
 			{
-				temp = edgearray[j]->weight;                      
-				edgearray[j]->weight = edgearray[j+1]->weight;
-				edgearray[j+1]->weight = temp;
+				temp = edgearray[j];
+				edgearray[j] = edgearray[j+1];
+				edgearray[j+1] = temp;
 			}
 		}
-	}
-
-	//this section IS ALL JUST FOR TESTING
-	cout << "Hello world, sorted edges:" << endl;
-	for (int i = 0; i < numberofedges; i++)
-	{
-		cout << edgearray[i]->weight << endl;
 	}
 
 	//make disjoint sets for all vertices
 	for (int i = 0; i < numpoints; i++)
 	{
-		makeset(vertexarray[i]); //Why does this work?
+		makeset(vertexarray[i]);
 	}
 
-	//int counter = 0;
 	for (int i = 0; i < numberofedges; i++)
 	{
 		if (find(edgearray[i]->a->set) != find(edgearray[i]->b->set))
 		{
-			//if (counter < numpoints - 1)
-			//{
-				spantree->addEdge(edgearray[i]);
-
-				cout << edgearray[i]->a << endl; //for testing
-				cout << edgearray[i]->b << endl; // for testing
-				cout << edgearray[i]->weight << endl; //for testing
-
-				setunion(edgearray[i]->a->set, edgearray[i]->b->set); //Does this work?
-				printAnswer (spantree->adjacency, numpoints);
-				//counter++;
-			//}
+			spantree->addEdge(edgearray[i]);
+			setunion(edgearray[i]->a->set, edgearray[i]->b->set);
 		}
 	}
-
+	
 	return spantree;
 }
