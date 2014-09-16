@@ -27,7 +27,7 @@ void test_init() {
     delete(g);
 }
 
-void test_addVertex() {
+/*void test_addVertex() {
     Graph* g = new Graph(1002);
 
     for (int i = 0; i < 1000; i++) {
@@ -48,7 +48,7 @@ void test_addVertex() {
         delete(g->vertices[i]);
     }
     delete(g);
-}
+}*/
 
 void test_addEdge1() {
     Vertex* v1 = new Vertex(2);

@@ -52,7 +52,7 @@ int Graph::maxVertices() {
 }
 
 // add a vertex to a graph.
-void Graph::addVertex(Vertex* vertex) {
+/*void Graph::addVertex(Vertex* vertex) {
     // first, check if v is already in graph
     bool v_in_graph = false;
     for (int i = 0; i < num_vertices; i++) {
@@ -68,7 +68,7 @@ void Graph::addVertex(Vertex* vertex) {
     vertices[num_vertices] = vertex;
     vtoi[vertex] = num_vertices;
     num_vertices++;
-}
+}*/
 
 // add an edge to a graph
 void Graph::addEdge(Edge* edge) {
@@ -79,11 +79,14 @@ void Graph::addEdge(Edge* edge) {
     }
     // first, check if either endpoints of the edges are already
     // in the graph
-    bool a_in_graph = false;
-    bool b_in_graph = false;
+    /*bool a_in_graph = false;
+    bool b_in_graph = false;*/
+
+    int a_index = edge->a->index;
+    int b_index = edge->b->index;
 
     // unfortunately this is O(n). TODO: optimize!!
-    for (unsigned int i = 0; i < vertices.size(); i++) {
+    /*for (unsigned int i = 0; i < vertices.size(); i++) {
         Vertex* v = vertices[i];
         if (v == edge->a) {
             a_in_graph = true;
@@ -111,7 +114,7 @@ void Graph::addEdge(Edge* edge) {
         vtoi[edge->b] = b_index;
         num_vertices++;
         vertices[b_index] = (edge->b);
-    }
+    }*/
 
     //cout << "s:" << a_index << " " << b_index << endl;
     adjacency[a_index][b_index] = edge->weight;
