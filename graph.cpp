@@ -65,7 +65,6 @@ void Graph::addEdge(Edge* edge) {
     vertices[b_index] = edge->b;
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
-    printf("adding edge (%u,%u)=%f\n", a_index, b_index,edge->weight);
 }
 
 vector<Vertex*> Graph::getVertices() {
@@ -87,7 +86,6 @@ vector<Edge*> Graph::getEdges() {
                 assert(i == ed->a->index);
                 ed->b = vertices[j];
                 assert(j == ed->b->index);
-                cout << "(" << i << "," << j << ")e =" << c << endl;
                 result.push_back(ed); 
             }
         }
