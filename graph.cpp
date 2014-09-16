@@ -91,3 +91,4 @@ vector<Edge*> Graph::getEdges() {
         }
     }
     return result;
+}
