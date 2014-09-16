@@ -1,7 +1,6 @@
 #include <iostream>
 #include <assert.h>
-#include "disjointset.h"
-#include "graph.h"
+#include "kruskal.h"
 
 using namespace std;
 
@@ -19,19 +18,14 @@ int main() {
 
 void disjointSetStuff()
 {
-    Graph* mygraph = new Graph(10);
-
     Vertex* vertex1 = new Vertex(3);
     DisjointSet* set1 = new DisjointSet(vertex1);
-    mygraph->addVertex(vertex1);
 
     Vertex* vertex2 = new Vertex(3);
     DisjointSet* set2 = new DisjointSet(vertex2);
-    mygraph->addVertex(vertex2);
 
     Vertex* vertex3 = new Vertex(3);
     DisjointSet* set3 = new DisjointSet(vertex3);
-    mygraph->addVertex(vertex3);
 
     assert(vertex1->set == set1);
     assert(set1->vertex == vertex1);
@@ -46,5 +40,7 @@ void disjointSetStuff()
     assert(setunion(set1,set3) == set2);
 
     assert(set3->parent == set2);
+
+    assert(find(set3) == set2);
 }
 

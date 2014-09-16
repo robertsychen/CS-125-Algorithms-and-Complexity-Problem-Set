@@ -61,9 +61,8 @@ void test_addEdge1() {
     Graph* g = new Graph(10);
     g->addEdge(edge);
 
-    assert(g->numVertices() == 2);
-    int index_a = g->vtoi[v1];
-    int index_b = g->vtoi[v2];
+    int index_a = v1->index;
+    int index_b = v2->index;
     assert(g->adjacency[index_a][index_b] == edge->weight);
     assert(g->adjacency[index_b][index_a] == edge->weight);
 

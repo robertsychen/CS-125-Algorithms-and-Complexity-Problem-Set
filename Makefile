@@ -3,10 +3,10 @@ all: randmst test001 test002
 randmst: randmst.o kruskal.o disjointset.o graph.o
 	g++ -g randmst.o disjointset.o graph.o kruskal.o -lm -o randmst
 
-test003: test003.o graph.o randmst.o disjointset.o
-	g++ -g test003.o graph.o disjointset.o randmst.o -lm -o test003
+test003: test003.o graph.o kruskal.o disjointset.o
+	g++ -g test003.o graph.o disjointset.o kruskal.o -lm -o test003
 
-test003.o: test003.cpp graph.h
+test003.o: test003.cpp kruskal.h graph.h disjointset.h
 	g++ -Wall -g -c test003.cpp
 
 test002: test002.o disjointset.o graph.o
