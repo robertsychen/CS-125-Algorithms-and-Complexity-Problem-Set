@@ -117,6 +117,8 @@ void Graph::addEdge(Edge* edge) {
     }*/
 
     //cout << "s:" << a_index << " " << b_index << endl;
+    vertices[a_index] = edge->a;
+    vertices[b_index] = edge->b;
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
 }

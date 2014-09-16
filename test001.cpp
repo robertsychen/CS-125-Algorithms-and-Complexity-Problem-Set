@@ -5,7 +5,6 @@
 using namespace std;
 
 void test_init();
-void test_addVertex();
 void test_addEdge1();
 void test_addEdge2();
 void test_getEdges();
@@ -16,7 +15,7 @@ void test_getEdges();
  */
 int main(int argc, char** argv) {
     test_init();
-    test_addVertex();
+    //test_addVertex();
     test_addEdge1();
 }
 
