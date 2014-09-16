@@ -160,7 +160,7 @@ Graph* kruskal(Graph* graph1, int numpoints)
 	int counter = 0;
 	for (int i = 0; i < numberofedges; i++)
 	{
-		if (edgearray[i]->a->set != edgearray[i]->b->set)
+		if (find(edgearray[i]->a->set) != find(edgearray[i]->b->set))
 		{
 			if (counter < numpoints - 1)
 			{
