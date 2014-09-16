@@ -1,7 +1,13 @@
-all: randmst test001 test002
+all: randmst test001 test002 test003
 
 randmst: randmst.o disjointset.o graph.o
 	g++ -g randmst.o disjointset.o graph.o -lm -o randmst
+
+test003: test003.o graph.o randmst.o disjointset.o
+	g++ -g test003.o graph.o disjointset.o randmst.o -lm -o test003
+
+test003.o: test003.cpp graph.h
+	g++ -Wall -g -c test003.cpp
 
 test002: test002.o disjointset.o graph.o
 	g++ -g test002.o graph.o disjointset.o -lm -o test002

@@ -11,6 +11,7 @@ class Vertex {
         vector<double> value;
         DisjointSet* set;
         int dimension;
+        int index; // the index of the vertex in any graph.
 };
 
 class Edge {
@@ -40,6 +41,8 @@ class Graph {
 
         int numVertices(); // number of vertices
         int maxVertices(); //maximum number of vertices
+
+        int totalWeight(); //weight of the graph
 
     protected:
         int num_vertices;

@@ -6,8 +6,12 @@
 using namespace std;
 
 Vertex::Vertex(int dim) {
+    static int count = 0;
     dimension = dim;
     value.resize(dim);
+
+    index = count;
+    count++;
 }
 
 Vertex::~Vertex() {
@@ -27,6 +31,16 @@ Graph::Graph(int max_vert) {
 
 Graph::~Graph() {
 
+}
+
+int Graph::totalWeight() {
+    int sum = 0;
+    for (int i = 0; i < max_vertices; i++) {
+        for (int j = i+1; j < max_vertices; j++) {
+            sum += adjacency[i][j];
+        }
+    }
+    return sum;
 }
 
 int Graph::numVertices() {
