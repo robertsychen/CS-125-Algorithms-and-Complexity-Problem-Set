@@ -34,11 +34,11 @@ Graph::~Graph() {
 
 }
 
-int Graph::totalWeight() {
-    int sum = 0;
+double Graph::totalWeight() {
+    double sum = 0;
     for (int i = 0; i < max_vertices; i++) {
         for (int j = i+1; j < max_vertices; j++) {
-            sum += adjacency[i][j];
+            sum += this->adjacency[i][j];
         }
     }
     return sum;
@@ -63,6 +63,7 @@ void Graph::addEdge(Edge* edge) {
 
     vertices[a_index] = edge->a;
     vertices[b_index] = edge->b;
+
     adjacency[a_index][b_index] = edge->weight;
     adjacency[b_index][a_index] = edge->weight;
 }

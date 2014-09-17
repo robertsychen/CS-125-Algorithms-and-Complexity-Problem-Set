@@ -41,7 +41,7 @@ class Graph {
         int numVertices(); // number of vertices
         int maxVertices(); //maximum number of vertices
 
-        int totalWeight(); //weight of the graph
+        double totalWeight(); //weight of the graph
 
     protected:
         int num_vertices;

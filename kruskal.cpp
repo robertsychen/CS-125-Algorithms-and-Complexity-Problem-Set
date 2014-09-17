@@ -9,9 +9,23 @@
 #include "kruskal.h"
 using namespace std;
 
+//used in order to perform edge weight sorting
+struct compare {
+    bool operator()(const Edge* lhs, const Edge* rhs) const {
+         return lhs->weight < rhs->weight;
+    }
+};
+
 vector <Vertex*> createPoints(int numpoints, int dimension)
 {
 	//generates random coordinates for points, stored as vector of Vertexes
+
+	//treat special case of dimension = 0
+	if (dimension == 0)
+	{
+		dimension = 1;
+	}
+
 	vector <Vertex*> points(numpoints);
 	cout << "Here are the coordinates of the vertices." << endl;
 	for (int i = 0; i < numpoints; i++)
@@ -21,9 +35,9 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
 		for (int j = 0; j < dimension; j++)
 		{
 			points[i]->value[j] = ((double) rand() / (RAND_MAX));
-			cout << setw(10) << points[i]->value[j];
+			//cout << setw(10) << points[i]->value[j];
 		}
-		cout << endl;
+		//cout << endl;
 	}
 
 	return points;
@@ -31,10 +45,29 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
 
 void addTheEdges(vector <Vertex*> somepoints, int numpoints, int dimension, Graph* myGraph)
 {
-	//need to implement special case of dimension = 1...
-
 	//uses Graph function to add edges into adjacency matrix, and prints weights in matrix
+
 	cout << "Here is the adjacency matrix of edge weights." << endl;
+
+	//treat special case of dimension = 0
+	if (dimension == 0)
+	{
+		for (int i = 0; i < numpoints; i++)
+		{
+			for (int j = 0; j < numpoints; j++)
+			{
+				Edge* thisEdge = new Edge();
+				thisEdge->weight = ((double) rand() / (RAND_MAX));
+				thisEdge->a = somepoints[i];
+				thisEdge->b = somepoints[j];
+				myGraph->addEdge(thisEdge);
+				cout << std::setw(10) << thisEdge->weight;
+			}
+			cout << endl;
+		}
+		return;
+	}
+
 	double squareddistance;
 	for (int i = 0; i < numpoints; i++)
 	{
@@ -51,9 +84,9 @@ void addTheEdges(vector <Vertex*> somepoints, int numpoints, int dimension, Grap
 			thisEdge->b = somepoints[j];
 			myGraph->addEdge(thisEdge);
 
-			cout << std::setw(10) << thisEdge->weight;
+			//cout << std::setw(10) << thisEdge->weight;
 		} 
-		cout << endl;
+		//cout << endl;
 	}
 }
 
@@ -80,23 +113,9 @@ Graph* kruskal(Graph* graph1, int numpoints)
 
 	vector<Edge*> edgearray = graph1->getEdges();
 
-	
 	vector<Vertex*> vertexarray = graph1->getVertices();
 
-	//bubble sort the edges of the complete graph
-	Edge* temp = new Edge;
-	for (int i = 0; i <= numberofedges-2; i++)             
-	{
-		for (int j = 0; j <= numberofedges-2; j++)
-		{
-			if (edgearray[j]->weight > edgearray[j+1]->weight)
-			{
-				temp = edgearray[j];
-				edgearray[j] = edgearray[j+1];
-				edgearray[j+1] = temp;
-			}
-		}
-	}
+	sort(edgearray.begin(), edgearray.end(), compare());
 
 	//make disjoint sets for all vertices
 	for (int i = 0; i < numpoints; i++)
