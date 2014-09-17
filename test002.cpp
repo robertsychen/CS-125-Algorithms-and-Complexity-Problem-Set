@@ -42,5 +42,9 @@ void disjointSetStuff()
     assert(set3->parent == set2);
 
     assert(find(set3) == set2);
+
+    delete(vertex1);
+    delete(vertex2);
+    delete(vertex3);
 }
 

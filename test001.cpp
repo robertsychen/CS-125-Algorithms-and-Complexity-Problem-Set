@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 void test_init() {
     Graph* g = new Graph(10);
     assert((int)g->vertices.size() == g->maxVertices());
-    assert((int)g->adjacency.size() == g->maxVertices());
+    //assert((int)g->adjacency.size() == g->maxVertices());
     delete(g);
 }
 
@@ -61,10 +61,10 @@ void test_addEdge1() {
     Graph* g = new Graph(10);
     g->addEdge(edge);
 
-    int index_a = v1->index;
-    int index_b = v2->index;
-    assert(g->adjacency[index_a][index_b] == edge->weight);
-    assert(g->adjacency[index_b][index_a] == edge->weight);
+    //int index_a = v1->index;
+    //int index_b = v2->index;
+    //assert(g->adjacency[index_a][index_b] == edge->weight);
+    //assert(g->adjacency[index_b][index_a] == edge->weight);
 
     delete(g);
     delete(v1);
