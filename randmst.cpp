@@ -29,7 +29,10 @@ int main(int argc, char **argv)
 
         Graph* answer = kruskal(completeGraph, numpoints);
 
-        printAnswer(answer->adjacency, numpoints);
+        //printAnswer(answer->adjacency, numpoints);
+
+        cout << "The total weight is ";
+        cout << answer->totalWeight() << endl;
     }
     
     return 0;
