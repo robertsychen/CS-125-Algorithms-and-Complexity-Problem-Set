@@ -44,6 +44,7 @@ class Graph {
         double totalWeight(); //weight of the graph
 
     protected:
+        vector<Edge*> edges;
         int num_vertices;
         int max_vertices;
 };

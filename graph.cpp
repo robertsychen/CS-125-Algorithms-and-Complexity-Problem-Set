@@ -15,18 +15,26 @@ Vertex::Vertex(int dim) {
 
     index = count;
     count++;
+
+    set = NULL;
 }
 
 Vertex::~Vertex() {
+    if (set != NULL) {
+        delete(set);
+    }
 }
 
 Graph::Graph(int max_vert) {
     max_vertices = max_vert; 
     num_vertices = 0; 
+
+    /*
     adjacency.resize(max_vertices);
     for (int i = 0; i < max_vertices; i++) {
         adjacency[i].resize(max_vertices);
     }
+    */
     vertices.resize(max_vertices);
 }
 
@@ -35,6 +43,12 @@ Graph::~Graph() {
 }
 
 double Graph::totalWeight() {
+    double sum = 0; 
+    for (unsigned int i = 0; i < edges.size(); i++) {
+        sum += edges[i]->weight;
+    }
+    return sum;
+    /*
     double sum = 0;
     for (int i = 0; i < max_vertices; i++) {
         for (int j = i+1; j < max_vertices; j++) {
@@ -42,6 +56,7 @@ double Graph::totalWeight() {
         }
     }
     return sum;
+    */
 }
 
 int Graph::numVertices() {
@@ -64,8 +79,10 @@ void Graph::addEdge(Edge* edge) {
     vertices[a_index] = edge->a;
     vertices[b_index] = edge->b;
 
-    adjacency[a_index][b_index] = edge->weight;
-    adjacency[b_index][a_index] = edge->weight;
+    //adjacency[a_index][b_index] = edge->weight;
+    //adjacency[b_index][a_index] = edge->weight;
+
+    edges.push_back(edge);
 }
 
 vector<Vertex*> Graph::getVertices() {
@@ -73,7 +90,8 @@ vector<Vertex*> Graph::getVertices() {
 }
 
 vector<Edge*> Graph::getEdges() {
-
+    return edges;
+    /*
     vector<Edge*> result;
 
     for (int i = 0; i < max_vertices; i++) {
@@ -92,4 +110,5 @@ vector<Edge*> Graph::getEdges() {
         }
     }
     return result;
+    */
 }
