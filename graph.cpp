@@ -8,18 +8,20 @@
 #include "disjointset.h"
 using namespace std;
 
+int active_vertices;
+
 Vertex::Vertex(int dim) {
-    static int count = 0;
     dimension = dim;
     value.resize(dim);
 
-    index = count;
-    count++;
+    index = active_vertices;
+    active_vertices++;
 
     set = NULL;
 }
 
 Vertex::~Vertex() {
+    active_vertices--;
     if (set != NULL) {
         delete(set);
     }
