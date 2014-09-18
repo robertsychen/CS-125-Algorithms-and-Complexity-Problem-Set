@@ -64,9 +64,7 @@ void addTheEdges(vector <Vertex*> somepoints, int numpoints,
                 thisEdge->a = somepoints[i];
                 thisEdge->b = somepoints[j];
                 myGraph->addEdge(thisEdge);
-                cout << std::setw(10) << thisEdge->weight;
             }
-            cout << endl;
         }
         return;
     }
