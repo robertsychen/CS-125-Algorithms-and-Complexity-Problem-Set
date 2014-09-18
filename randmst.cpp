@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 {
     srand (time(NULL));
 
-    if (argc <= 5) {
+    if (argc != 5) {
         cout << "4 arguments required. Program exiting." << endl;
         return 1;
     }
