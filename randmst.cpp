@@ -77,10 +77,12 @@ int main(int argc, char **argv)
             }
         }
 
+        /*
         if (answer != NULL)
             cout << max << "," << answer->totalWeight() << endl;
         else 
             cout << max << "," << "NA" << endl;
+            */
 
         vector<Edge*> edges = completeGraph->getEdges();
         for (unsigned int i = 0; i < edges.size(); i++) {
