@@ -46,29 +46,29 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
 
 Edge* pruneEdge(Edge* edge, int numpoints, int dimension) {
     double weight = edge->weight;
-/*
+
     if (numpoints >= 65536) {
-        if ((dimension == 1 && weight > 0.0024) ||
-            (dimension == 2 && weight > 0.041) ||
-            (dimension == 3 && weight > 0.164) ||
-            (dimension == 4 && weight > 0.3)) 
+        if ((dimension == 1 && weight > 0.000331) ||
+            (dimension == 2 && weight > 0.012877) ||
+            (dimension == 3 && weight > 0.061914) ||
+            (dimension == 4 && weight > 0.131187)) 
         {
            free(edge);
            return NULL;
         }
     }
     else if (numpoints > 32768) {
-        if ((dimension == 1 && weight > 0.0024) ||
-            (dimension == 2 && weight > 0.041) ||
-            (dimension == 3 && weight > 0.164) ||
-            (dimension == 4 && weight > 0.3)) 
+        if ((dimension == 1 && weight > 0.000628) ||
+            (dimension == 2 && weight > 0.01673) ||
+            (dimension == 3 && weight > 0.070706) ||
+            (dimension == 4 && weight > 0.139354)) 
         {
            free(edge);
            return NULL;
         }
     }
 
-    else */if (numpoints >= 16384) {
+    else if (numpoints >= 16384) {
         if ((dimension == 1 && weight > 0.00102294) ||
             (dimension == 2 && weight > 0.02307) ||
             (dimension == 3 && weight > 0.095375) ||
