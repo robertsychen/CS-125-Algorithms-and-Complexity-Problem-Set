@@ -17,15 +17,20 @@ int main(int argc, char **argv)
         cout << "4 arguments required. Program exiting." << endl;
         return 1;
     }
+
     int alg = atoi(argv[1]);
     int numpoints = atoi(argv[2]);
     int numtrials = atoi(argv[3]);
     int dimension = atoi(argv[4]);
 
-    bool surpressOut = false;
+    double overallTotal = 0;
+
+    //to suppress additional print statements
+    bool surpressOut = true;
     
     for (int i = 0; i < numtrials; i++)
     {
+        //create points with random coordinates
         vector <Vertex*> setOfPoints(numpoints);
         if (!surpressOut)
             cout << "Creating points" << endl;
@@ -33,7 +38,6 @@ int main(int argc, char **argv)
         if (!surpressOut)
             cout << "Created " << setOfPoints.size() << " vertices" << endl;
 
-         
         //make a complete Graph
         Graph* completeGraph = new Graph(numpoints);
         if (!surpressOut)
@@ -49,27 +53,21 @@ int main(int argc, char **argv)
             cout << "Running Kruskal's algorithm" << endl;
         Graph* answer = kruskal(completeGraph, numpoints);
 
-        //this doesn't really work right now
-        //printAnswer(answer->adjacency, numpoints);
-
-        if (!surpressOut) {
-            if (answer != NULL) {
-                cout << "Kruskal found a mst." << endl;
-                cout << "The total weight is " << endl;
-                cout << answer->totalWeight() << endl;
-
-                cout << "Cleaning up memory" << endl;
-            } else {
-                cout << "No answer found.  Pruning was too aggressive."
-                    << endl;
-            }
+        if (answer == NULL)
+        {
+            cout << "You won the lottery! No answer found.  Pruning was too aggressive." << endl;
+            return 2;   
         }
-        // cleanup memory
+
+        overallTotal += answer->totalWeight();
+
+        // clean up memory
         for (unsigned int i = 0; i < setOfPoints.size(); i++) {
             delete(setOfPoints[i]);
         }
-       
-        double max = 0;
+        
+        //code used for pruning edges optimization calculation
+        /*double max = 0;
         vector<Edge*> mst_edges = answer->getEdges();
         for (unsigned int i = 0; i < mst_edges.size(); i++) {
             if (mst_edges[i]->weight > max) {
@@ -77,20 +75,17 @@ int main(int argc, char **argv)
             }
         }
 
-        /*
-        if (answer != NULL)
-            cout << max << "," << answer->totalWeight() << endl;
-        else 
-            cout << max << "," << "NA" << endl;
-            */
-
         vector<Edge*> edges = completeGraph->getEdges();
         for (unsigned int i = 0; i < edges.size(); i++) {
             delete(edges[i]);
-        }
+        }*/
+
         delete(completeGraph);
         if (answer != NULL) 
             delete(answer);
     }
+
+    cout << overallTotal/numtrials << " " << numpoints << " " << numtrials << " " << dimension << endl;
+
     return 0;
 }

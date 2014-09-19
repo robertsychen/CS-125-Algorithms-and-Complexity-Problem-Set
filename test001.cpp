@@ -26,29 +26,6 @@ void test_init() {
     delete(g);
 }
 
-/*void test_addVertex() {
-    Graph* g = new Graph(1002);
-
-    for (int i = 0; i < 1000; i++) {
-        Vertex* v = new Vertex(1);
-        g->addVertex(v);
-        assert(g->numVertices() == i+1);
-    }
-
-    for (int i = 0; i < 1000; i++) {
-        Vertex* v = g->vertices[i];
-        assert(g->vtoi[v] == i);
-
-        g->addVertex(v);
-        assert(g->numVertices() == 1000);
-    }
-    
-    for (int i = 0; i < 1000;i++) {
-        delete(g->vertices[i]);
-    }
-    delete(g);
-}*/
-
 void test_addEdge1() {
     Vertex* v1 = new Vertex(2);
     Vertex* v2 = new Vertex(2);
@@ -70,9 +47,6 @@ void test_addEdge1() {
     delete(v1);
     delete(v2);
     delete(edge);
-}
-void test_addEdge2() {
-
 }
 
 void test_getEdges() {

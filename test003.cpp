@@ -4,6 +4,8 @@
 
 using namespace std;
 
+//Some tests on operations for Edges and Vertexes in a Graph
+
 void test_smallCase();
 void test_smallCase2();
 

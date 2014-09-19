@@ -5,6 +5,7 @@
 using namespace std;
 
 class DisjointSet;
+
 class Vertex {
     public:
         Vertex(int);
@@ -12,7 +13,7 @@ class Vertex {
         vector<double> value;
         DisjointSet* set;
         int dimension;
-        int index; // the index of the vertex in any graph.
+        int index; // the index of the vertex in any graph
 };
 
 class Edge {
@@ -27,10 +28,10 @@ class Graph {
         Graph(int); // constructor
         ~Graph(); // destructor
 
-        // maps ints to vectors (vertices[i])
         vector<Vertex*> vertices;
 
-        vector< vector<double> > adjacency;
+        //adjacency matrix code no longer necessary after revisions    
+        //vector< vector<double> > adjacency;
 
         vector<Vertex*> getVertices();
         vector<Edge*> getEdges();

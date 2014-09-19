@@ -31,6 +31,7 @@ Graph::Graph(int max_vert) {
     max_vertices = max_vert; 
     num_vertices = 0; 
 
+    //adjacency matrix code no longer necessary after revisions
     /*
     adjacency.resize(max_vertices);
     for (int i = 0; i < max_vertices; i++) {
@@ -50,6 +51,8 @@ double Graph::totalWeight() {
         sum += edges[i]->weight;
     }
     return sum;
+
+    //adjacency matrix code no longer necessary after revisions
     /*
     double sum = 0;
     for (int i = 0; i < max_vertices; i++) {
@@ -81,6 +84,7 @@ void Graph::addEdge(Edge* edge) {
     vertices[a_index] = edge->a;
     vertices[b_index] = edge->b;
 
+    //adjacency matrix code no longer necessary after revisions
     //adjacency[a_index][b_index] = edge->weight;
     //adjacency[b_index][a_index] = edge->weight;
 
@@ -93,6 +97,8 @@ vector<Vertex*> Graph::getVertices() {
 
 vector<Edge*> Graph::getEdges() {
     return edges;
+
+    //adjacency matrix code no longer necessary after revisions
     /*
     vector<Edge*> result;
 

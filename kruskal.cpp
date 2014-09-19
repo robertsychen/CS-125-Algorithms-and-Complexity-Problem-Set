@@ -28,7 +28,7 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
     }
 
     vector <Vertex*> points(numpoints);
-    //cout << "Here are the coordinates of the vertices." << endl;
+
     for (int i = 0; i < numpoints; i++)
     {
         Vertex* aVertex = new Vertex(dimension);
@@ -36,14 +36,13 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
         for (int j = 0; j < dimension; j++)
         {
             points[i]->value[j] = ((double) rand() / (RAND_MAX));
-            //cout << setw(10) << points[i]->value[j];
         }
-        //cout << endl;
     }
 
     return points;
 }
 
+//frees edges which are sufficiently big to be disregarded
 Edge* pruneEdge(Edge* edge, int numpoints, int dimension) {
     double weight = edge->weight;
 
@@ -101,19 +100,16 @@ Edge* pruneEdge(Edge* edge, int numpoints, int dimension) {
     return edge;
 }
 
-// returns the number of edges that were added and the number pruned
+//creates Edges with given Vertexes as endpoints
+//returns the number of edges that were added and the number pruned
 int* addTheEdges(vector <Vertex*> somepoints, int numpoints, 
     int dimension, Graph* myGraph, int alg)
 {
     int* result = new int[2];
     result[0] = 0;
     result[1] = 0;
-    //uses Graph function to add edges into adjacency matrix, 
-    //and prints weights in matrix
 
-    //cout << "Here is the adjacency matrix of edge weights." << endl;
-
-    //treat special case of dimension = 0
+    //treat special case of dimension = 0, which doesn't require finding Euclidean distance
     if (dimension == 0)
     {
         for (int i = 0; i < numpoints; i++)
@@ -139,6 +135,7 @@ int* addTheEdges(vector <Vertex*> somepoints, int numpoints,
         return result;
     }
 
+    //adding edges, for all other dimensions
     double squareddistance;
     for (int i = 0; i < numpoints; i++)
     {
@@ -164,27 +161,9 @@ int* addTheEdges(vector <Vertex*> somepoints, int numpoints,
             } else {
                 result[1]++;
             }
-
-            //cout << std::setw(10) << thisEdge->weight;
         } 
-        //cout << endl;
     }
     return result;
-}
-
-void printAnswer(vector<vector<double> > answerMatrix, int numpoints)
-{
-    //print out answer
-    cout << "Here is a matrix depicting which edges "
-        "are in the minimum spanning tree." << endl;
-    for (int i = 0; i < numpoints; i++)
-    {
-        for (int j = 0; j < numpoints; j++)
-        {
-            cout << std::setw(10) << answerMatrix[i][j];
-        }
-        cout << endl;
-    }
 }
 
 // will return NULL if kruskal failed, the graph otherwise.
@@ -192,14 +171,15 @@ Graph* kruskal(Graph* graph1, int numpoints)
 {
     int spantree_edges = 0;
     Graph* spantree = new Graph(numpoints);
-    //double numberofedges = (numpoints)*(numpoints - 1)*(0.5);
+
     vector<Edge*> edgearray = graph1->getEdges();
     double numberofedges = edgearray.size();
+
     vector<Vertex*> vertexarray = graph1->getVertices();
 
     sort(edgearray.begin(), edgearray.end(), compare());
 
-    //make disjoint sets for all vertices
+    //make disjoint sets for all Vertexes
     for (int i = 0; i < numpoints; i++)
     {
         makeset(vertexarray[i]);
