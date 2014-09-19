@@ -21,34 +21,49 @@ int main(int argc, char **argv)
     int numpoints = atoi(argv[2]);
     int numtrials = atoi(argv[3]);
     int dimension = atoi(argv[4]);
+
+    bool surpressOut = true;
     
     for (int i = 0; i < numtrials; i++)
     {
         vector <Vertex*> setOfPoints(numpoints);
-        cout << "Creating points" << endl;
+        if (!surpressOut)
+            cout << "Creating points" << endl;
         setOfPoints = createPoints(numpoints, dimension);
-        cout << "Created " << setOfPoints.size() << " vertices" << endl;
+        if (!surpressOut)
+            cout << "Created " << setOfPoints.size() << " vertices" << endl;
 
          
         //make a complete Graph
         Graph* completeGraph = new Graph(numpoints);
-        cout << "Creating complete graph" << endl;
+        if (!surpressOut)
+            cout << "Creating complete graph" << endl;
         int* status = 
             addTheEdges(setOfPoints, numpoints, dimension, completeGraph, alg);
-        cout << "Created a graph with " << status[0] << " edges. Pruned "
+
+        if (!surpressOut)
+            cout << "Created a graph with " << status[0] << " edges. Pruned "
             << status[1] << " edges." << endl;
 
-
-        cout << "Running Kruskal's algorithm" << endl;
+        if (!surpressOut)
+            cout << "Running Kruskal's algorithm" << endl;
         Graph* answer = kruskal(completeGraph, numpoints);
 
         //this doesn't really work right now
         //printAnswer(answer->adjacency, numpoints);
 
-        cout << "The total weight is " << endl;
-        cout << answer->totalWeight() << endl;
+        if (!surpressOut) {
+            if (answer != NULL) {
+                cout << "Kruskal found a mst." << endl;
+                cout << "The total weight is " << endl;
+                cout << answer->totalWeight() << endl;
 
-        cout << "Cleaning up memory" << endl;
+                cout << "Cleaning up memory" << endl;
+            } else {
+                cout << "No answer found.  Pruning was too aggressive."
+                    << endl;
+            }
+        }
         // cleanup memory
         for (unsigned int i = 0; i < setOfPoints.size(); i++) {
             delete(setOfPoints[i]);
@@ -69,7 +84,8 @@ int main(int argc, char **argv)
         }
         cout << max << endl;
         delete(completeGraph);
-        delete(answer);
+        if (answer != NULL) 
+            delete(answer);
     }
     return 0;
 }

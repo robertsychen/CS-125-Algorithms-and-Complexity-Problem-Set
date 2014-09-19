@@ -46,11 +46,52 @@ vector <Vertex*> createPoints(int numpoints, int dimension)
 
 Edge* pruneEdge(Edge* edge, int numpoints, int dimension) {
     double weight = edge->weight;
-    if (numpoints >= 5000) {
-        if ((dimension == 1 && weight > 0.00456) ||
-            (dimension == 2 && weight > 0.055) ||
+    if (numpoints >= 65536) {
+        if ((dimension == 1 && weight > 0.0024) ||
+            (dimension == 2 && weight > 0.041) ||
             (dimension == 3 && weight > 0.164) ||
             (dimension == 4 && weight > 0.3)) 
+        {
+           free(edge);
+           return NULL;
+        }
+    }
+    else if (numpoints > 32768) {
+        if ((dimension == 1 && weight > 0.0024) ||
+            (dimension == 2 && weight > 0.041) ||
+            (dimension == 3 && weight > 0.164) ||
+            (dimension == 4 && weight > 0.3)) 
+        {
+           free(edge);
+           return NULL;
+        }
+    }
+
+    else if (numpoints >= 16384) {
+        if ((dimension == 1 && weight > 0.00102294) ||
+            (dimension == 2 && weight > 0.02307) ||
+            (dimension == 3 && weight > 0.095375) ||
+            (dimension == 4 && weight > 0.17278)) 
+        {
+           free(edge);
+           return NULL;
+        }
+    }
+    else if (numpoints >= 8192) {
+        if ((dimension == 1 && weight > 0.001998) ||
+            (dimension == 2 && weight > 0.031497) ||
+            (dimension == 3 && weight > 0.103562) ||
+            (dimension == 4 && weight > 0.211244)) 
+        {
+           free(edge);
+           return NULL;
+        }
+    }
+    else if (numpoints >= 5000) {
+        if ((dimension == 1 && weight > 0.004005747) ||
+            (dimension == 2 && weight > 0.040789) ||
+            (dimension == 3 && weight > 0.134857) ||
+            (dimension == 4 && weight > 0.236215)) 
         {
            free(edge);
            return NULL;
@@ -145,8 +186,10 @@ void printAnswer(vector<vector<double> > answerMatrix, int numpoints)
     }
 }
 
+// will return NULL if kruskal failed, the graph otherwise.
 Graph* kruskal(Graph* graph1, int numpoints)
 {
+    int spantree_edges = 0;
     Graph* spantree = new Graph(numpoints);
     //double numberofedges = (numpoints)*(numpoints - 1)*(0.5);
     vector<Edge*> edgearray = graph1->getEdges();
@@ -167,8 +210,15 @@ Graph* kruskal(Graph* graph1, int numpoints)
         {
             spantree->addEdge(edgearray[i]);
             setunion(edgearray[i]->a->set, edgearray[i]->b->set);
+            spantree_edges++;
         }
     }
     
-    return spantree;
+    if(spantree_edges != numpoints - 1) {
+        // kruskal failed
+        delete(spantree);
+        return NULL;
+    } else {
+        return spantree;
+    }
 }
