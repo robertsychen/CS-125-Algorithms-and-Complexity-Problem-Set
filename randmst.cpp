@@ -22,7 +22,7 @@ int main(int argc, char **argv)
     int numtrials = atoi(argv[3]);
     int dimension = atoi(argv[4]);
 
-    bool surpressOut = true;
+    bool surpressOut = false;
     
     for (int i = 0; i < numtrials; i++)
     {
